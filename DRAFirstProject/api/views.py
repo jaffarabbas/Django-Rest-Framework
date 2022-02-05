@@ -13,8 +13,6 @@ def Student_detail(request, pk):
     # return HttpResponse(json_data , content_type="application/json")
     return JsonResponse(serializers.data)
 
-
-
 # for all data
 def Student_List(request):
     stuDetail = Student.objects.all()
