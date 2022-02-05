@@ -2,7 +2,7 @@ import re
 import requests
 import json
 
-URL = "http://127.0.0.1:8000/stucreate"
+URL = "http://127.0.0.1:8000/stucreate/"
 data={
     'name':'jaffar',
     'roll':3,
