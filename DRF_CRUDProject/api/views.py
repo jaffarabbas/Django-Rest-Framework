@@ -8,25 +8,6 @@ from rest_framework.renderers import JSONRenderer
 from django.http import HttpResponse,JsonResponse
 from django.views.decorators.csrf import csrf_exempt
 
-# for get Students
-# def GetStudent(request):
-#     if request.method == 'GET':
-#         json_data = request.body
-#         print('json : ',json_data)
-#         stream =  io.BytesIO(json_data)
-#         data = JSONParser().parse(stream)
-#         id = data.get('id',None)
-#         if id is not None:
-#             stdData = Student.objects.get(id=id)
-#             serializer = StudentSerializer(stdData)
-#             json_data = JSONRenderer().render(serializer.data)
-#             return HttpResponse(json_data , content_type='application/json')
-#         #if there is no id all data will get
-#         stdData = Student.objects.all()
-#         serializer = StudentSerializer(stdData,many=True)
-#         json_data = JSONRenderer().render(serializer.data)
-#         return HttpResponse(json_data , content_type='application/json')
-
 def getStudent(request,pk):
     if (request.method == 'GET'):
         stuDetail = Student.objects.get(id = pk)
@@ -39,7 +20,6 @@ def getStudents(request):
         serializers = StudentSerializer(stuDetail, many=True)
         return JsonResponse(serializers.data, safe=False)
 
-# Create your views here.
 @csrf_exempt
 def postStudent(request):
     if(request.method == 'POST'):
