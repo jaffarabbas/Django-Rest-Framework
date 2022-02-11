@@ -5,7 +5,7 @@ from .models import Student
 from .serializers import StudentSerializer
 
 # Create your views here.
-@api_view(['GET', 'POST', 'PUT', 'DELETE'])
+@api_view(['GET', 'POST', 'PUT', 'PATCH' ,'DELETE'])
 def student_api(request):
     if request.method == 'GET':
         id = request.data.get('id')
