@@ -9,7 +9,7 @@ from rest_framework import viewsets
 class StudentViewSet(viewsets.ViewSet):
     def list(self, request):
         stuData = Student.objects.all()
-        serializers = StudentSerializer(stuData)
+        serializers = StudentSerializer(stuData,many=True)
         return Response(serializers.data, status=status.HTTP_200_OK)
 
     def retrieve(self, request, pk=None):
@@ -29,7 +29,7 @@ class StudentViewSet(viewsets.ViewSet):
     def update(self, request,pk):
         id = pk
         stuData = Student.objects.get(pk=id)
-        serializers = StudentSerializer(stuData,data=request.data)
+        serializers = StudentSerializer(stuData,data= request.data)
         if serializers.is_valid():
             serializers.save()
             return Response({'msg':'Complete data Updated'}, status=status.HTTP_200_OK)
