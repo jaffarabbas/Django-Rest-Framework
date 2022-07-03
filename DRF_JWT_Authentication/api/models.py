@@ -9,9 +9,3 @@ class Student(models.Model):
     name = models.CharField(max_length=100)
     roll = models.IntegerField()
     city = models.CharField(max_length=100)
-
-# code for signals
-@receiver(post_save, sender=settings.AUTH_USER_MODEL)
-def create_auth_token(self, instance=None, created=False,**kwargs):
-    if created:
-        Token.objects.create(user=instance)
